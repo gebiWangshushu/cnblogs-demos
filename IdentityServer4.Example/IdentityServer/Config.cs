@@ -113,7 +113,7 @@ namespace IdentityServer
                 }
                 ,
                 // sso implicit client
-                new Client
+                new Client 
                 {
                     ClientId = "ssoimplicit",  //这个client id 跟 MfcImplicit 里面的配置要一致
                     ClientName = "sso implicit clinet",
