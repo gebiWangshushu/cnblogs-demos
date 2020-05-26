@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29709.97
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hei.OcelotOnK8s", "Hei.OcelotOnK8s\Hei.OcelotOnK8s.csproj", "{56902A0D-5DB3-40FA-9588-E5FEE7CFFB09}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hei.Api", "Hei.Api\Hei.Api.csproj", "{22309345-DFDC-4ACF-9D25-DFA58939BCE3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{56902A0D-5DB3-40FA-9588-E5FEE7CFFB09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56902A0D-5DB3-40FA-9588-E5FEE7CFFB09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56902A0D-5DB3-40FA-9588-E5FEE7CFFB09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56902A0D-5DB3-40FA-9588-E5FEE7CFFB09}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22309345-DFDC-4ACF-9D25-DFA58939BCE3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22309345-DFDC-4ACF-9D25-DFA58939BCE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22309345-DFDC-4ACF-9D25-DFA58939BCE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22309345-DFDC-4ACF-9D25-DFA58939BCE3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6D79184A-E598-4983-9B14-C10FDAAB8998}
+	EndGlobalSection
+EndGlobal
