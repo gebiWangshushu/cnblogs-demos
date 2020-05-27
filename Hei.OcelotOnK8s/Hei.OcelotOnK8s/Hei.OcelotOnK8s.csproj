@@ -8,4 +8,6 @@
     <PackageReference Include="Ocelot" Version="16.0.1" />
   </ItemGroup>
 
+  <ProjectExtensions><VisualStudio><UserProperties ocelot_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
+
 </Project>
