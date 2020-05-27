@@ -1,16 +1,17 @@
 {
   "Routes": [
-    {
-      "DownstreamPathTemplate": "/api/{everything}",
+    {     
+      "UpstreamPathTemplate": "/{id}",
+      "DownstreamPathTemplate": "/{id}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 5001
+          "Port": 5003
         }
       ],
-      "UpstreamPathTemplate": "/{everything}",
-      "UpstreamHttpMethod": [ "Get", "Post" ]
+
+      "UpstreamHttpMethod": [ "Get" ]
     }
   ],
   "GlobalConfiguration": {

@@ -17,14 +17,13 @@ namespace Hei.OcelotOnK8s
     {
         public IConfiguration Configuration { get; }
 
-        public Startup(IWebHostEnvironment env)
+        public Startup(IConfiguration configuration, IWebHostEnvironment env)
         {
-            var builder = new ConfigurationBuilder().SetBasePath(env.ContentRootPath)
-                      .AddJsonFile("appsettings.json", true, true)
-                      .AddJsonFile($"appsettings.{env.EnvironmentName}.json", true, true)
-                      .AddJsonFile("ocelot.json")
-                      .AddEnvironmentVariables();
-
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(env.ContentRootPath)
+                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true, reloadOnChange: true)
+                .AddJsonFile("ocelot.json");
             Configuration = builder.Build();
         }
 
@@ -33,7 +32,6 @@ namespace Hei.OcelotOnK8s
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddOcelot();
-            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
