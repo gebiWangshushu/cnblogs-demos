@@ -1,20 +1,3 @@
 {
-  "Routes": [
-    {     
-      "UpstreamPathTemplate": "/api/{url}",
-      "DownstreamPathTemplate": "/{url}",
-      "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 5003
-        }
-      ],
 
-      "UpstreamHttpMethod": [ "Get" ]
-    }
-  ],
-  "GlobalConfiguration": {
-    "BaseUrl": "http://localhost:5000"
-  }
 }

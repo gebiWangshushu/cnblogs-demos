@@ -12,6 +12,7 @@ using Microsoft.Extensions.Hosting;
 using Ocelot.Administration;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
+using Ocelot.Provider.Kubernetes;
 
 namespace Hei.OcelotOnK8s
 {
@@ -34,14 +35,17 @@ namespace Hei.OcelotOnK8s
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddOcelot(Configuration).AddAdministration("/administration", options=> 
-            {
-                options.Authority = "http://passport-test.39.net";///connect/token
-                options.ApiName = "api1";
-                options.RequireHttpsMetadata = false;
-                options.SupportedTokens = SupportedTokens.Both;
-                options.ApiSecret = "secret";
-            }); 
+            services.AddOcelot(Configuration)
+                    .AddKubernetes()
+                    .AddAdministration("/administration", options =>
+                    {
+                        options.Authority = "http://passport-test.39.net";///connect/token
+                        options.ApiName = "api1";
+                        options.RequireHttpsMetadata = false;
+                        options.SupportedTokens = SupportedTokens.Both;
+                        options.ApiSecret = "secret";
+                    })
+                    ; 
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
