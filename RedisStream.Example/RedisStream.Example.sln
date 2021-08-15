@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31105.61
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RedisStream.Example", "RedisStream.Example\RedisStream.Example.csproj", "{FB9E1439-384B-4E00-89AC-54FF6EC6CC6B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FB9E1439-384B-4E00-89AC-54FF6EC6CC6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB9E1439-384B-4E00-89AC-54FF6EC6CC6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB9E1439-384B-4E00-89AC-54FF6EC6CC6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB9E1439-384B-4E00-89AC-54FF6EC6CC6B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C1E4EE48-73A5-4D70-9675-2C3AC184F0E1}
+	EndGlobalSection
+EndGlobal
