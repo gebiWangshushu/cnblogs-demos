@@ -1,20 +1,25 @@
 {
   "Routes": [
-    {     
+    {
       "UpstreamPathTemplate": "/{url}",
       "DownstreamPathTemplate": "/{url}",
       "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 5003
-        }
-      ],
-
+      "ServiceName": "k8s-demo",
+      "UpstreamHttpMethod": [ "Get" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/{url}",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/apple/{url}",
+      "ServiceName": "apple-api-ocelot",
       "UpstreamHttpMethod": [ "Get" ]
     }
   ],
   "GlobalConfiguration": {
-    "BaseUrl": "http://localhost:5000"
+    "ServiceDiscoveryProvider": {
+      "Namespace": "aspnetcore",
+      "Type": "kube"
+    },
+    "BaseUrl": "https://172.16.1.30:31000"
   }
 }
