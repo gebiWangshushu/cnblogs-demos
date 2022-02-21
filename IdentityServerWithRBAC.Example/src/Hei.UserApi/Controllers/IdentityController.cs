@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using CustomRBACAuthorizationPolicy;
 
-namespace Api.Controllers
+namespace Hei.UserApi.Controllers
 {
     [Route("identity")]
     [Authorize]
@@ -15,7 +15,6 @@ namespace Api.Controllers
         [CustomRBACAuthorize]
         public IActionResult Get()
         {
-    
             return new JsonResult(from c in User.Claims select new { c.Type, c.Value });
         }
     }

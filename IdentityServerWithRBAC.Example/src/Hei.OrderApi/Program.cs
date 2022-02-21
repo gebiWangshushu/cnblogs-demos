@@ -6,7 +6,7 @@ using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 
-namespace Api
+namespace Hei.OrderApi
 {
     public class Program
     {

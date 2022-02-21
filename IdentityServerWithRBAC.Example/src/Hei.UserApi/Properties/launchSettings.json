@@ -7,7 +7,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
       "applicationUrl": "https://localhost:6001",
-      "launchUrl": "identity"
+      "launchUrl": "api/profile/getusername"
     }
   }
 }

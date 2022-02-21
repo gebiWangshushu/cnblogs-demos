@@ -7,7 +7,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{BD8BA25C-A91
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityServer", "src\IdentityServer\IdentityServer.csproj", "{79D1F107-F3AF-4A93-BF5D-49EF6A46E50E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api", "src\Api\Api.csproj", "{08C496D7-9A83-4B2B-A7E4-74A283034313}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hei.UserApi", "src\Hei.UserApi\Hei.UserApi.csproj", "{08C496D7-9A83-4B2B-A7E4-74A283034313}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MvcClient", "src\MvcClient\MvcClient.csproj", "{BF5923FF-9E93-4C01-93C2-8CE7A3F62D12}"
 EndProject
@@ -15,7 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataServices", "src\DataSer
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Apis", "Apis", "{4023CD10-A459-4A19-BA19-2F79E77FE489}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomRBACAuthorizationPolicy", "CustomRBACAuthorizationPolicy\CustomRBACAuthorizationPolicy.csproj", "{E3B63260-C9C2-4789-B4F0-4C0D231FD8A2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomRBACAuthorizationPolicy", "src\CustomRBACAuthorizationPolicy\CustomRBACAuthorizationPolicy.csproj", "{E3B63260-C9C2-4789-B4F0-4C0D231FD8A2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hei.OrderApi", "src\Hei.OrderApi\Hei.OrderApi.csproj", "{8A66D6D0-0215-461F-8E56-252361D2C30C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -87,6 +89,18 @@ Global
 		{E3B63260-C9C2-4789-B4F0-4C0D231FD8A2}.Release|x64.Build.0 = Release|Any CPU
 		{E3B63260-C9C2-4789-B4F0-4C0D231FD8A2}.Release|x86.ActiveCfg = Release|Any CPU
 		{E3B63260-C9C2-4789-B4F0-4C0D231FD8A2}.Release|x86.Build.0 = Release|Any CPU
+		{8A66D6D0-0215-461F-8E56-252361D2C30C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A66D6D0-0215-461F-8E56-252361D2C30C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A66D6D0-0215-461F-8E56-252361D2C30C}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{8A66D6D0-0215-461F-8E56-252361D2C30C}.Debug|x64.Build.0 = Debug|Any CPU
+		{8A66D6D0-0215-461F-8E56-252361D2C30C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{8A66D6D0-0215-461F-8E56-252361D2C30C}.Debug|x86.Build.0 = Debug|Any CPU
+		{8A66D6D0-0215-461F-8E56-252361D2C30C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A66D6D0-0215-461F-8E56-252361D2C30C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A66D6D0-0215-461F-8E56-252361D2C30C}.Release|x64.ActiveCfg = Release|Any CPU
+		{8A66D6D0-0215-461F-8E56-252361D2C30C}.Release|x64.Build.0 = Release|Any CPU
+		{8A66D6D0-0215-461F-8E56-252361D2C30C}.Release|x86.ActiveCfg = Release|Any CPU
+		{8A66D6D0-0215-461F-8E56-252361D2C30C}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -98,6 +112,7 @@ Global
 		{48096949-8A75-4821-BE24-D445DBA1A808} = {BD8BA25C-A91D-419D-99B6-B575ADD6D061}
 		{4023CD10-A459-4A19-BA19-2F79E77FE489} = {BD8BA25C-A91D-419D-99B6-B575ADD6D061}
 		{E3B63260-C9C2-4789-B4F0-4C0D231FD8A2} = {BD8BA25C-A91D-419D-99B6-B575ADD6D061}
+		{8A66D6D0-0215-461F-8E56-252361D2C30C} = {4023CD10-A459-4A19-BA19-2F79E77FE489}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {84D5AF06-1243-46F1-9D58-70ED572832C3}

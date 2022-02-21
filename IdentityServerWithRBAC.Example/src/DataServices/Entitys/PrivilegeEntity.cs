@@ -6,7 +6,6 @@ namespace DataServices.Entitys
 {
     public class PrivilegeEntity
     {
-
         /// <summary>
         /// 权限id
         /// </summary>
@@ -19,18 +18,18 @@ namespace DataServices.Entitys
         public string RoleId { get; set; }
 
         /// <summary>
-        /// 
+        /// Api的唯一识别明（本demo用程序集名称）
         /// </summary>
         public string ApiName { get; set; }
 
         /// <summary>
-        /// 
+        /// 已授权Action
         /// </summary>
-        public string ControllerPattern { get; set; } = "*";
+        public string[] AuthorisedActions { get; set; }
 
         /// <summary>
-        /// 
+        /// 已授权controller
         /// </summary>
-        public string ActionPattern { get; set;} = "*";
+        public string[] AuthorisedControllers { get; set; }
     }
 }
