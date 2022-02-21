@@ -8,4 +8,8 @@
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.9" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\CustomRBACAuthorizationPolicy\CustomRBACAuthorizationPolicy.csproj" />
+  </ItemGroup>
+
 </Project>

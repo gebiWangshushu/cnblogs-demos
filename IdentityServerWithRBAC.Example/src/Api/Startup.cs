@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Brock Allen & Dominick Baier. All rights reserved.
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
+using CustomRBACAuthorizationPolicy;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
@@ -24,16 +25,18 @@ namespace Api
                         ValidateAudience = false
                     };
                 });
-            
+
+            services.AddCustomRBACAuthorizationPolicy();
+
             // adds an authorization policy to make sure the token is for scope 'api1'
-            services.AddAuthorization(options =>
-            {
-                options.AddPolicy("ApiScope", policy =>
-                {
-                    policy.RequireAuthenticatedUser();
-                    policy.RequireClaim("scope", "api1");
-                });
-            });
+            //services.AddAuthorization(options =>
+            //{
+            //    options.AddPolicy("ApiScope", policy =>
+            //    {
+            //        policy.RequireAuthenticatedUser();
+            //        policy.RequireClaim("scope", "api1");
+            //    });
+            //});
         }
 
         public void Configure(IApplicationBuilder app)
@@ -46,7 +49,8 @@ namespace Api
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers()
-                    .RequireAuthorization("ApiScope");
+                    //.RequireAuthorization("ApiScope")
+                    ;
             });
         }
     }

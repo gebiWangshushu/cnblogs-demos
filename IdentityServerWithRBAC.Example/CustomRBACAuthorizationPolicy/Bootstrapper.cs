@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -18,6 +19,7 @@ namespace CustomRBACAuthorizationPolicy
         public static IServiceCollection AddCustomRBACAuthorizationPolicy(this IServiceCollection services)
         {
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
             services.AddSingleton<IAuthorizationPolicyProvider, CustomRBACPolicyProvider>();
             services.AddSingleton<IAuthorizationHandler, CustomRBACRequirementHandler>();
 

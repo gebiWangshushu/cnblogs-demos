@@ -59,6 +59,18 @@ namespace IdentityServer
                         "api1"
                     }
                 }
+                ,  // vue client
+                new Client
+                {
+                    ClientId = "password1",
+                    RequireClientSecret=false,
+                    AllowedGrantTypes = GrantTypes.ResourceOwnerPassword, 
+                    AllowedScopes = new List<string>
+                    {
+                        IdentityServerConstants.StandardScopes.OpenId,
+                        IdentityServerConstants.StandardScopes.Profile
+                    }
+                }
             };
     }
 }
