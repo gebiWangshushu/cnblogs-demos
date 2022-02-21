@@ -7,6 +7,10 @@ namespace DataServices.Entitys
     public class PrivilegeEntity
     {
 
+        /// <summary>
+        /// 权限id
+        /// </summary>
+
         public string PrivilegeId { get; set; }
 
         /// <summary>
@@ -14,9 +18,19 @@ namespace DataServices.Entitys
         /// </summary>
         public string RoleId { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public string ApiName { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public string ControllerPattern { get; set; } = "*";
 
-        public string PrivilegeName { get; set;}
-        public string PrivilegeScope { get; set;}
+        /// <summary>
+        /// 
+        /// </summary>
+        public string ActionPattern { get; set;} = "*";
     }
 }

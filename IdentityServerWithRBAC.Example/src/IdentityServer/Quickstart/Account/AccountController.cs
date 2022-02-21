@@ -16,6 +16,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace IdentityServerHost.Quickstart.UI
@@ -113,7 +114,7 @@ namespace IdentityServerHost.Quickstart.UI
                 if (_users.ValidateCredentials(model.Username, model.Password))
                 {
                     var user = _users.FindByUsername(model.Username);
-                    await _events.RaiseAsync(new UserLoginSuccessEvent(user.Username, user.ProviderSubjectId, user.SubjectId,user.Username, clientId: context?.Client.ClientId));
+                    await _events.RaiseAsync(new UserLoginSuccessEvent(user.Username, user.SubjectId,user.Username, clientId: context?.Client.ClientId));
 
                     // only set explicit expiration here if user chooses "remember me". 
                     // otherwise we rely upon expiration configured in cookie middleware.
@@ -134,6 +135,10 @@ namespace IdentityServerHost.Quickstart.UI
                     };
 
                     await HttpContext.SignInAsync(isuser, props);
+                    //await HttpContext.SignInAsync(isuser.SubjectId, isuser.DisplayName, props, new Claim[]
+                    //{
+                    //    user.Claims.FirstOrDefault(c=>c.Type=="rid"),
+                    //});
 
                     if (context != null)
                     {
@@ -173,7 +178,13 @@ namespace IdentityServerHost.Quickstart.UI
             return View(vm);
         }
 
-        
+        [HttpGet]
+        public async Task<IActionResult> Claims()
+        {
+            return new JsonResult(from c in User.Claims select new { c.Type, c.Value });
+        }
+
+
         /// <summary>
         /// Show logout page
         /// </summary>
