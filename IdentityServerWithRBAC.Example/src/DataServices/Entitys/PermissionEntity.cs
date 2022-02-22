@@ -4,13 +4,13 @@ using System.Text;
 
 namespace DataServices.Entitys
 {
-    public class PrivilegeEntity
+    public class PermissionEntity
     {
         /// <summary>
         /// 权限id
         /// </summary>
 
-        public string PrivilegeId { get; set; }
+        public string PermissionId { get; set; }
 
         /// <summary>
         /// 角色id

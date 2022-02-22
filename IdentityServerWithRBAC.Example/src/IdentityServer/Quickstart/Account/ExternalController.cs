@@ -1,3 +1,4 @@
+using DataServices;
 using IdentityModel;
 using IdentityServer4;
 using IdentityServer4.Events;
@@ -36,7 +37,7 @@ namespace IdentityServerHost.Quickstart.UI
         {
             // if the TestUserStore is not in DI, then we'll just use the global users collection
             // this is where you would plug in your own custom identity management library (e.g. ASP.NET Identity)
-            _users = users ?? new TestUserStore(TestUsers.Users);
+            _users = users ?? new TestUserStore(UserService.Users);
 
             _interaction = interaction;
             _clientStore = clientStore;
@@ -58,20 +59,19 @@ namespace IdentityServerHost.Quickstart.UI
                 // user might have clicked on a malicious link - should be logged
                 throw new Exception("invalid return URL");
             }
-            
-            // start challenge and roundtrip the return URL and scheme 
+
+            // start challenge and roundtrip the return URL and scheme
             var props = new AuthenticationProperties
             {
-                RedirectUri = Url.Action(nameof(Callback)), 
+                RedirectUri = Url.Action(nameof(Callback)),
                 Items =
                 {
-                    { "returnUrl", returnUrl }, 
+                    { "returnUrl", returnUrl },
                     { "scheme", scheme },
                 }
             };
 
             return Challenge(props, scheme);
-            
         }
 
         /// <summary>
@@ -109,7 +109,7 @@ namespace IdentityServerHost.Quickstart.UI
             var additionalLocalClaims = new List<Claim>();
             var localSignInProps = new AuthenticationProperties();
             ProcessLoginCallback(result, additionalLocalClaims, localSignInProps);
-            
+
             // issue authentication cookie for user
             var isuser = new IdentityServerUser(user.SubjectId)
             {

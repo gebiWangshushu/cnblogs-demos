@@ -1,7 +1,7 @@
 ﻿// Copyright (c) Brock Allen & Dominick Baier. All rights reserved.
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
-
+using DataServices;
 using IdentityServer4;
 using IdentityServerHost.Quickstart.UI;
 using Microsoft.AspNetCore.Builder;
@@ -22,7 +22,7 @@ namespace IdentityServer
                 .AddInMemoryIdentityResources(Config.IdentityResources)
                 .AddInMemoryApiScopes(Config.ApiScopes)
                 .AddInMemoryClients(Config.Clients)
-                .AddTestUsers(TestUsers.Users);
+                .AddTestUsers(UserService.Users);
 
             builder.AddDeveloperSigningCredential();
 
@@ -51,6 +51,8 @@ namespace IdentityServer
                         RoleClaimType = "role"
                     };
                 });
+
+            builder.AddResourceOwnerValidator<CustomResourceOwnerPasswordValidator>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

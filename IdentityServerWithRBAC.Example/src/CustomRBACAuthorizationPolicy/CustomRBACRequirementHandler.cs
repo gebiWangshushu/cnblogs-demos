@@ -3,8 +3,10 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
+using Microsoft.AspNetCore.Routing;
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -19,26 +21,24 @@ namespace CustomRBACAuthorizationPolicy
         {
             _httpContextAccessor = httpContextAccessor;
             _actionContextAccessor = actionContextAccessor;
-            var endpoint = _httpContextAccessor.HttpContext.GetEndpoint();
-            var descriptor = endpoint.Metadata.GetMetadata<ControllerActionDescriptor>();
-            var controllerName = descriptor.ControllerName;
+            //var endpoint = _httpContextAccessor.HttpContext.GetEndpoint();
+            //var descriptor = endpoint.Metadata.GetMetadata<ControllerActionDescriptor>();
+            //var controllerName = descriptor.ControllerName;
         }
 
         protected override Task HandleRequirementAsync(AuthorizationHandlerContext context, CustomRBACRequirement requirement)
         {
-            var subid = context.User?.FindFirst(c => c.Type == "sub");
-            var httpContext = _httpContextAccessor.HttpContext;
+            var subid = context.User?.FindFirst(c => c.Type == "sub")?.ToString();
+            var routeData = _httpContextAccessor.HttpContext?.GetRouteData();
 
-            var mvcContext = context.Resource as AuthorizationFilterContext;
-            var descriptor = mvcContext?.ActionDescriptor as ControllerActionDescriptor;
-            if (descriptor != null)
+            var curentAction = routeData?.Values["action"]?.ToString();
+            var curentController = routeData?.Values["controller"]?.ToString();
+            var apiName = Assembly.GetEntryAssembly().GetName().Name; //入口程序集，用来标识某个api
+
+            if (string.IsNullOrWhiteSpace(subid) == false && string.IsNullOrWhiteSpace(curentAction) == false && string.IsNullOrWhiteSpace(curentController) == false)
             {
-                var actionName = descriptor.ActionName;
-                var ctrlName = descriptor.ControllerName;
+                //var
             }
-
-            var currentController = _actionContextAccessor.ActionContext?.RouteData?.Values?["controller"].ToString();
-            var currentAction = _actionContextAccessor.ActionContext?.RouteData?.Values?["action"].ToString();
 
             return Task.CompletedTask;
         }
