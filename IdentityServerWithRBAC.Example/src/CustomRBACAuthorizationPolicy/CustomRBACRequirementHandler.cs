@@ -9,6 +9,10 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using DataServices;
+using System.Linq;
+using System.Security.Claims;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace CustomRBACAuthorizationPolicy
 {
@@ -21,23 +25,30 @@ namespace CustomRBACAuthorizationPolicy
         {
             _httpContextAccessor = httpContextAccessor;
             _actionContextAccessor = actionContextAccessor;
-            //var endpoint = _httpContextAccessor.HttpContext.GetEndpoint();
-            //var descriptor = endpoint.Metadata.GetMetadata<ControllerActionDescriptor>();
-            //var controllerName = descriptor.ControllerName;
         }
 
         protected override Task HandleRequirementAsync(AuthorizationHandlerContext context, CustomRBACRequirement requirement)
         {
-            var subid = context.User?.FindFirst(c => c.Type == "sub")?.ToString();
+            var subid = context.User?.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             var routeData = _httpContextAccessor.HttpContext?.GetRouteData();
 
             var curentAction = routeData?.Values["action"]?.ToString();
             var curentController = routeData?.Values["controller"]?.ToString();
-            var apiName = Assembly.GetEntryAssembly().GetName().Name; //入口程序集，用来标识某个api
+
+            //入口程序集，用来标识某个api
+            var apiName = Assembly.GetEntryAssembly().GetName().Name;
 
             if (string.IsNullOrWhiteSpace(subid) == false && string.IsNullOrWhiteSpace(curentAction) == false && string.IsNullOrWhiteSpace(curentController) == false)
             {
-                //var
+                var userPermission = PermissionService.GetUserPermissionBySubid(apiName, subid);
+                if (userPermission != null)
+                {
+                    var authActions = userPermission.Authorised?[curentController];
+                    if (authActions?.Any(action => action == curentAction) == true)
+                    {
+                        context.Succeed(requirement);
+                    }
+                }
             }
 
             return Task.CompletedTask;

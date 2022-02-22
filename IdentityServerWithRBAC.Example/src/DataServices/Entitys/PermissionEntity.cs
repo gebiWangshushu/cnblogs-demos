@@ -23,13 +23,8 @@ namespace DataServices.Entitys
         public string ApiName { get; set; }
 
         /// <summary>
-        /// 已授权Action
+        /// 已授权信息，这里简单写写 key=controller,value=
         /// </summary>
-        public string[] AuthorisedActions { get; set; }
-
-        /// <summary>
-        /// 已授权controller
-        /// </summary>
-        public string[] AuthorisedControllers { get; set; }
+        public Dictionary<string, List<string>> Authorised { get; set; }
     }
 }

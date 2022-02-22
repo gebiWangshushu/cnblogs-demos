@@ -32,7 +32,7 @@ namespace DataServices
                         Password = "alice",
                         Claims =
                         {
-                            new Claim("rid", "r001"),
+                            new Claim("rid", "R01"),
                             new Claim(JwtClaimTypes.Name, "Alice Smith"),
                             new Claim(JwtClaimTypes.GivenName, "Alice"),
                             new Claim(JwtClaimTypes.FamilyName, "Smith"),
@@ -49,7 +49,7 @@ namespace DataServices
                         Password = "bob",
                         Claims =
                         {
-                            new Claim("rid", "r002"),
+                            new Claim("rid", "R02"),
                             new Claim(JwtClaimTypes.Name, "Bob Smith"),
                             new Claim(JwtClaimTypes.GivenName, "Bob"),
                             new Claim(JwtClaimTypes.FamilyName, "Smith"),

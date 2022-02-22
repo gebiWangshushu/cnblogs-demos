@@ -30,8 +30,6 @@ namespace Hei.UserApi.Controllers
         [HttpGet]
         public string GetNickname(string id)
         {
-            HttpContext.GetEndpoint();
-            IHttpContextAccessor a;
             return "明明~~";
         }
     }
