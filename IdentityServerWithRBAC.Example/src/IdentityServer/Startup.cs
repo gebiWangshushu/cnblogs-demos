@@ -3,6 +3,7 @@
 
 using DataServices;
 using IdentityServer4;
+using IdentityServer4.Services;
 using IdentityServerHost.Quickstart.UI;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -22,7 +23,10 @@ namespace IdentityServer
                 .AddInMemoryIdentityResources(Config.IdentityResources)
                 .AddInMemoryApiScopes(Config.ApiScopes)
                 .AddInMemoryClients(Config.Clients)
-                .AddTestUsers(UserService.Users);
+                .AddTestUsers(UserService.Users)
+                //.AddResourceOwnerValidator<CustomResourceOwnerPasswordValidator>()
+                //.AddProfileService<CustomProfileService>()
+                ;
 
             builder.AddDeveloperSigningCredential();
 
@@ -53,6 +57,7 @@ namespace IdentityServer
                 });
 
             builder.AddResourceOwnerValidator<CustomResourceOwnerPasswordValidator>();
+            builder.AddProfileService<CustomProfileService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

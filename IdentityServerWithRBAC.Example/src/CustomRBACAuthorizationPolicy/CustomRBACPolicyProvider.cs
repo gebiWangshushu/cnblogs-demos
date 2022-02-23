@@ -35,6 +35,7 @@ namespace CustomRBACAuthorizationPolicy
             if (policyName.StartsWith(Const.PolicyCombineId4ExternalRBAC, StringComparison.OrdinalIgnoreCase))
             {
                 var policys = new AuthorizationPolicyBuilder();
+                //这里使用自定义Requirement
                 policys.AddRequirements(new CustomRBACRequirement(policyName.Replace(Const.PolicyCombineId4ExternalRBAC,"")));
                 return Task.FromResult(policys.Build());
             }

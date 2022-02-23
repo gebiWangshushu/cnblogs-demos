@@ -4,6 +4,7 @@ using IdentityServer4.Validation;
 using IdentityServerHost.Quickstart.UI;
 using System;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace IdentityServer
@@ -22,7 +23,7 @@ namespace IdentityServer
 
                 if (loginUser != null)
                 {
-                    context.Result = new GrantValidationResult(loginUser.SubjectId, OidcConstants.AuthenticationMethods.Password);
+                    context.Result = new GrantValidationResult(loginUser.SubjectId, OidcConstants.AuthenticationMethods.Password, new Claim[]{new Claim("my_phone","10086")});
                     return Task.CompletedTask;
                 }
             }

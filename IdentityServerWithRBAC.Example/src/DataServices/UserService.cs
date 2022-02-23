@@ -11,6 +11,9 @@ namespace DataServices
 {
     public class UserService
     {
+        /// <summary>
+        /// 用户信息（实际上这些应该存在数据库）
+        /// </summary>
         public static List<TestUser> Users
         {
             get
@@ -29,7 +32,7 @@ namespace DataServices
                     {
                         SubjectId = "1001",
                         Username = "alice",
-                        Password = "alice",
+                        Password = "alice", 
                         Claims =
                         {
                             new Claim("rid", "R01"),

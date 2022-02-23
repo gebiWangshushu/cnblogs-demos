@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using CustomRBACAuthorizationPolicy;
+using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -14,6 +15,7 @@ namespace Hei.UserApi.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet]
+        [CustomRBACAuthorize] 
         public int GetScore(string id)
         {
             return 666;

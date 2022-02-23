@@ -19,14 +19,18 @@ namespace CustomRBACAuthorizationPolicy
     public class CustomRBACRequirementHandler : AuthorizationHandler<CustomRBACRequirement>
     {
         private readonly IHttpContextAccessor _httpContextAccessor;
-        private readonly IActionContextAccessor _actionContextAccessor;
 
-        public CustomRBACRequirementHandler(IHttpContextAccessor httpContextAccessor, IActionContextAccessor actionContextAccessor)
+        public CustomRBACRequirementHandler(IHttpContextAccessor httpContextAccessor)
         {
             _httpContextAccessor = httpContextAccessor;
-            _actionContextAccessor = actionContextAccessor;
         }
 
+        /// <summary>
+        /// 处理CustomRBACRequirement的逻辑
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="requirement"></param>
+        /// <returns></returns>
         protected override Task HandleRequirementAsync(AuthorizationHandlerContext context, CustomRBACRequirement requirement)
         {
             var subid = context.User?.FindFirst(ClaimTypes.NameIdentifier)?.Value;
@@ -40,10 +44,15 @@ namespace CustomRBACAuthorizationPolicy
 
             if (string.IsNullOrWhiteSpace(subid) == false && string.IsNullOrWhiteSpace(curentAction) == false && string.IsNullOrWhiteSpace(curentController) == false)
             {
+                //核心就在这里了，查出用户subid对应的角色权限，然后做处理判断有没有当前接口的权限
+                //我这里是demo就简单的模拟下，真实的权限数据应该都是写数据库或接口的
                 var userPermission = PermissionService.GetUserPermissionBySubid(apiName, subid);
-                if (userPermission != null)
+                if (userPermission != null && userPermission.Authorised.ContainsKey(curentController))
                 {
-                    var authActions = userPermission.Authorised?[curentController];
+                    var authActions = userPermission.Authorised[curentController];
+
+                    //这里判断当前用户的角色有当前action/controllers的权限
+                    //(真实的权限划分由你自己定义，比如你划分了只读接口，只写接口、特殊权限接口、内部接口等，在管理后台上分组，打标签/标记然后授予角色就行)
                     if (authActions?.Any(action => action == curentAction) == true)
                     {
                         context.Succeed(requirement);
