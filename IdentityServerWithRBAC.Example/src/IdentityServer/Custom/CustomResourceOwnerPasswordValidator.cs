@@ -23,7 +23,11 @@ namespace IdentityServer
 
                 if (loginUser != null)
                 {
-                    context.Result = new GrantValidationResult(loginUser.SubjectId, OidcConstants.AuthenticationMethods.Password, new Claim[]{new Claim("my_phone","10086")});
+                    context.Result = new GrantValidationResult(loginUser.SubjectId, OidcConstants.AuthenticationMethods.Password, new Claim[]
+                    {
+                        new Claim("my_phone","10086"),
+                        new Claim("multi_policy","test")
+                    });
                     return Task.CompletedTask;
                 }
             }

@@ -32,7 +32,7 @@ namespace DataServices
                     {
                         SubjectId = "1001",
                         Username = "alice",
-                        Password = "alice", 
+                        Password = "alice",
                         Claims =
                         {
                             new Claim("rid", "R01"),

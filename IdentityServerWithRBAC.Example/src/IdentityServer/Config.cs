@@ -1,7 +1,6 @@
 // Copyright (c) Brock Allen & Dominick Baier. All rights reserved.
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
-
 using IdentityServer4;
 using IdentityServer4.Models;
 using System.Collections.Generic;
@@ -17,11 +16,12 @@ namespace IdentityServer
                 new IdentityResources.Profile(),
             };
 
-
         public static IEnumerable<ApiScope> ApiScopes =>
             new List<ApiScope>
             {
-                new ApiScope("api1", "My API")
+                new ApiScope("api1", "My API"),
+                new ApiScope("admsapi.rw", "admsapi.rw"),
+                new ApiScope("admsapi.sa", "admsapi.sa"),
             };
 
         public static IEnumerable<Client> Clients =>
@@ -37,7 +37,7 @@ namespace IdentityServer
                     // scopes that client has access to
                     AllowedScopes = { "api1" }
                 },
-                
+
                 // interactive ASP.NET Core MVC client
                 new Client
                 {
@@ -45,7 +45,7 @@ namespace IdentityServer
                     ClientSecrets = { new Secret("secret".Sha256()) },
 
                     AllowedGrantTypes = GrantTypes.Code,
-                    
+
                     // where to redirect to after login
                     RedirectUris = { "https://localhost:5002/signin-oidc" },
 
@@ -64,11 +64,12 @@ namespace IdentityServer
                 {
                     ClientId = "password1",
                     RequireClientSecret=false,
-                    AllowedGrantTypes = GrantTypes.ResourceOwnerPassword, 
+                    AllowedGrantTypes = GrantTypes.ResourceOwnerPassword,
                     AllowedScopes = new List<string>
                     {
                         IdentityServerConstants.StandardScopes.OpenId,
-                        IdentityServerConstants.StandardScopes.Profile
+                        IdentityServerConstants.StandardScopes.Profile,
+                        "admsapi.rw"
                     }
                 }
             };

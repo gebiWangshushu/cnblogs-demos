@@ -16,6 +16,7 @@ namespace IdentityServer
         public async Task GetProfileDataAsync(ProfileDataRequestContext context)
         {
             var claims = context.Subject.Claims.ToList();
+
             context.IssuedClaims = claims;
         }
 
